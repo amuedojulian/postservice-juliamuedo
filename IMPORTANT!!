@@ -1,0 +1,3 @@
+Adicione a seguinte linha de código ao console CLI ng antes de executar FRONTEND:
+
+npm install --save-dev @angular-devkit/build-angular
