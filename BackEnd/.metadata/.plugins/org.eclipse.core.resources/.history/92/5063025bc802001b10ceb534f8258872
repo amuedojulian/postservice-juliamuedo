@@ -1,0 +1,65 @@
+package com.postservice.api.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.postservice.api.model.Postal;
+import com.postservice.api.model.Pessoa;
+import com.postservice.api.service.PessoaServices;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class PessoaController {
+	
+	@Autowired
+	private PessoaServices userService;
+
+	@GetMapping("/pessoas")
+	public List<Pessoa> getAllPessoas() {
+		return userService.getAllPessoa();
+	}
+	
+	@GetMapping("/pessoa/{id}")
+	public Optional<Pessoa> getUserById(@PathVariable Integer id) {
+		return userService.getPessoaById(id);
+	}
+	
+	@GetMapping("/pessoa/{id}/postais")
+	public List<Postal> getPostsByUser(@PathVariable Integer id) {
+	    Optional<Pessoa> pessoa = userService.getPessoaById(id);
+	    if(pessoa.isPresent()) {
+		return pessoa.get().getPostais();
+	    }
+	    return null;
+	}
+	
+	@GetMapping("/pessoas/lugar/{id}/pessoas")
+	public List<Pessoa> getUsersByLocation(@PathVariable Integer id) {
+	    return userService.getUsersByLocation(id);
+	}
+	
+	@PostMapping("/pessoas/addNew")
+	public void AddPessoa(@RequestBody Pessoa pessoa) {
+	    userService.AddPessoa(pessoa);
+	}
+	
+	@PutMapping("/pessoas/{id}/update")
+	public void UpdatePessoa(@RequestBody Pessoa pessoa ) {
+		userService.UpdatePessoa(pessoa);
+	}
+	
+	@DeleteMapping("/pessoas/{id}/delete")
+	public void DeletePessoa(@PathVariable Integer id) {
+	     userService.DeletePessoa(id);
+	}
+}

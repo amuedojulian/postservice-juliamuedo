@@ -1,0 +1,109 @@
+package com.postservice.api.model;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+@Entity
+public class Destinatario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String nome;
+	private String sobrenome;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="lugarid", insertable = false, updatable=false)
+	private Lugar lugar;
+
+	private Integer lugarid;
+
+	public Integer getLugarid() {
+	    return lugarid;
+	}
+
+	public void setLocationid(Integer lugarid) {
+	    this.lugarid = lugarid;
+	}
+
+	private String email;
+	
+	@OneToMany(mappedBy="pessoa", cascade = CascadeType.ALL)
+	private List<Postal> postals;
+	
+	
+	@JsonManagedReference
+	public List<Postal> getPosts() {
+		return postals;
+	}
+
+	public void setPosts(List<Postal> postals) {
+		this.postals = postals;
+	}
+
+	public Pessoa() {
+		
+	}
+	
+	public Pessoa(Integer id, String nome, String sobrenome, Lugar lugar, String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.lugar = lugar;
+		this.email = email;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nome;
+	}
+
+	public void setNombre(String nome) {
+		this.nome = nome;
+	}
+
+	public String getApellido() {
+		return sobrenome;
+	}
+
+	public void setApellido(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	@JsonBackReference
+	public Lugar getLocation() {
+		return lugar;
+	}
+
+	public void setLocation(Lugar lugar) {
+		this.lugar = lugar;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+}

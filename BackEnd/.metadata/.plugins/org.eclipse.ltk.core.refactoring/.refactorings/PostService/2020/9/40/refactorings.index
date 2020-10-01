@@ -1,0 +1,33 @@
+1601431260899	Rename package 'com.escolatools.api'
+1601431276915	Rename package 'com.escolatools.api.service'
+1601431292337	Rename package 'com.escolatools.api.repository'
+1601431325757	Rename package 'com.escolatools.api.configuration'
+1601431334593	Rename package 'com.escolatools.api.controller'
+1601431402642	Rename package 'com.escolatools.api'
+1601431421004	Rename type 'EscolaToolsApplicationTests'
+1601431445955	Rename type 'EscolaToolsApplication'
+1601431505184	Delete element
+1601431507439	Delete element
+1601431707092	Delete elements
+1601431734578	Delete elements
+1601431771043	Delete elements
+1601431794161	Delete elements
+1601431842157	Delete element
+1601432096302	Delete element
+1601432462403	Rename type 'User'
+1601432576728	Rename type 'Post'
+1601432747020	Rename type 'Location'
+1601433195129	Rename type 'LocationServices'
+1601433205656	Rename type 'PostServices'
+1601433214920	Rename type 'UserServices'
+1601433234898	Rename type 'UserController'
+1601433446475	Rename type 'PostController'
+1601433528818	Rename type 'LocationController'
+1601433812682	Rename type 'UserRepository'
+1601433824762	Rename type 'LocationRepository'
+1601433837517	Rename type 'PostRepository'
+1601434390944	Delete element
+1601480591893	Rename type 'DestinatarioService'
+1601480988210	Delete element
+1601480990989	Delete element
+1601480993395	Delete element

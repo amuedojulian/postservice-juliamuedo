@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.escolatools.api.service.ProfessoresService"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.repository.ProfessoresRepository"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.model.Professores"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.repository.AssuntosRepository"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.service.AssuntosService"/>
+    <fullyQualifiedTypeName name="com.google.common.base.Optional"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.model.Assuntos"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonManagedReference"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonBackReference"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.time.LocalTime"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.repository.CronogramaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.model.Cronograma"/>
+    <fullyQualifiedTypeName name="java.time.DayOfWeek"/>
+    <fullyQualifiedTypeName name="com.escolatools.api.service.CronogramaService"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="com.postservice.api.repository.DestinatarioRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.postservice.api.service.AllServices"/>
+    <fullyQualifiedTypeName name="com.postservice.api.model.Destinatario"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIdentityInfo"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.ObjectIdGenerators"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="com.google.common.base.Strings"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,245 @@
+package com.postservice.api.service;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.google.common.base.Strings;
+import com.postservice.api.model.Destinatario;
+import com.postservice.api.model.Lugar;
+import com.postservice.api.model.Pessoa;
+import com.postservice.api.model.Postal;
+import com.postservice.api.repository.DestinatarioRepository;
+import com.postservice.api.repository.LugarRepository;
+import com.postservice.api.repository.PessoaRepository;
+import com.postservice.api.repository.PostalRepository;
+
+@Service
+public class AllServices {
+	
+	
+	//<--- Serviços de Postal --->
+	@Autowired
+	private PostalRepository postalRepository;
+
+	public List<Postal> findAllPostal() {
+		return (List<Postal>) postalRepository.findAll();
+	}
+
+	public java.util.Optional<Postal> findPostalById(Integer id) {
+		return postalRepository.findById(id);
+	}
+	
+	public List<Postal> findByPessoaId(Integer id) {
+	    return postalRepository.findByPessoaId(id);
+	}
+
+	public void addPostal(Postal postal) {
+		Postal in = new Postal();
+		if (postal.getId() != null) {
+			in = postalRepository.getOne(postal.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(postal.getDetalhes())) {
+					postal.setDetalhes(in.getDetalhes());
+				} else if (postal.getPessoa() != null) {
+					postal.setPessoa(in.getPessoa());
+				} else if (postal.getDestinatario() != null) {
+					postal.setDestinatario(in.getDestinatario());
+				}
+			}
+		}
+		postalRepository.save(postal);
+	}
+	
+	public void UpdatePostal(Postal postal) {
+		Postal in = new Postal();
+		if (postal.getId() != null) {
+			in = postalRepository.getOne(postal.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(postal.getDetalhes())) {
+					postal.setDetalhes(in.getDetalhes());
+				} else if (postal.getPessoa() != null) {
+					postal.setPessoa(in.getPessoa());
+				} else if (postal.getDestinatario() != null) {
+					postal.setDestinatario(in.getDestinatario());
+				}
+			}
+		}
+		postalRepository.save(postal);
+	}
+	
+	public String DeletePostal(Integer id) {
+	    postalRepository.deleteById(id);
+	    Postal in = postalRepository.getOne(id);
+		if (in.equals(null)) {
+			return "Postal não encontrado";
+		} else {
+			postalRepository.delete(in);
+			return "Postal excluido com sucesso";
+		}
+	}
+	
+	
+	
+	//<--- Serviços de Pessoa --->
+	@Autowired
+	private PessoaRepository pessoaRepository;
+	
+	public List<Pessoa> getAllPessoa() {
+		return pessoaRepository.findAll();
+	}
+
+	public Optional<Pessoa> getPessoaById(Integer id) {
+		return pessoaRepository.findById(id);
+	}
+	
+	public List<Pessoa> getPessoasByLocation(Integer id) {
+	    return pessoaRepository.findByLugarId(id);
+	}
+	
+	public void AddPessoa(Pessoa pessoa) {
+		Pessoa in = new Pessoa();
+		if (pessoa.getId() != null) {
+			in = pessoaRepository.getOne(pessoa.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(pessoa.getNome())) {
+					pessoa.setNome(in.getNome());
+				} else if (Strings.isNullOrEmpty(pessoa.getApellido())) {
+					pessoa.setApellido(in.getApellido());
+				} else if (pessoa.getLocation() != null) {
+					pessoa.setLocation(in.getLocation());
+				}
+			}
+		}
+		pessoaRepository.save(pessoa);
+	}
+	
+	public void UpdatePessoa(Pessoa pessoa) {
+		Pessoa in = new Pessoa();
+		if (pessoa.getId() != null) {
+			in = pessoaRepository.getOne(pessoa.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(pessoa.getNome())) {
+					pessoa.setNome(in.getNome());
+				} else if (Strings.isNullOrEmpty(pessoa.getApellido())) {
+					pessoa.setApellido(in.getApellido());
+				} else if (pessoa.getLocation() != null) {
+					pessoa.setLocation(in.getLocation());
+				}
+			}
+		}
+		pessoaRepository.save(pessoa);
+	}
+	
+	public String DeletePessoa(Integer id) {
+	    pessoaRepository.deleteById(id);
+	    Pessoa in = pessoaRepository.getOne(id);
+		if (in.equals(null)) {
+			return "Pessoa não encontrado";
+		} else {
+			pessoaRepository.delete(in);
+			return "Pessoa excluido com sucesso";
+		}
+	}
+	
+	
+	
+	//<--- Serviços de Lugar --->
+	@Autowired
+	private LugarRepository lugarRepository; 
+
+	public List<Lugar> findAllLugar() {
+		return (List<Lugar>) lugarRepository.findAll();
+	}
+
+	public java.util.Optional<Lugar> findLugarById(Integer id) {
+		return lugarRepository.findById(id);
+	}
+	
+	public void AddLugar(Lugar lugar) {
+		Lugar in = new Lugar();
+		if (lugar.getId() != null) {
+			in = lugarRepository.getOne(lugar.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(lugar.getNome())) {
+					lugar.setNome(in.getNome());
+				}
+			}
+		}
+	     lugarRepository.save(lugar);
+	}
+	
+	public void UpdateLugar(Lugar lugar) {
+		Lugar in = new Lugar();
+		if (lugar.getId() != null) {
+			in = lugarRepository.getOne(lugar.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(lugar.getNome())) {
+					lugar.setNome(in.getNome());
+				}
+			}
+		}
+		lugarRepository.save(lugar);
+	}
+	
+	public String DeleteLugar(Integer id) {
+	    lugarRepository.deleteById(id);
+	    Lugar in = lugarRepository.getOne(id);
+		if (in.equals(null)) {
+			return "Lugar não encontrado";
+		} else {
+			lugarRepository.delete(in);
+			return "Lugar excluido com sucesso";
+		}
+	}
+	
+	
+	
+	//<--- Serviços de destinatário --->
+	@Autowired
+	private DestinatarioRepository destinatarioRepository; 
+
+	public List<Destinatario> findAllDestinatario() {
+		return (List<Destinatario>) destinatarioRepository.findAll();
+	}
+
+	public java.util.Optional<Destinatario> findDestinatarioById(Integer id) {
+		return destinatarioRepository.findById(id);
+	}
+	
+	public void AddDestinatario(Destinatario destinatario) {
+		Destinatario in = new Destinatario();
+		if (destinatario.getId() != null) {
+			in = destinatarioRepository.getOne(destinatario.getId());
+			if (in != null) {
+				if (Strings.isNullOrEmpty(destinatario.getNome())) {
+					destinatario.setNome(in.getNome());
+				} else if (Strings.isNullOrEmpty(destinatario.getSobrenome())) {
+					destinatario.setApellido(in.getApellido());
+				} else if (pessoa.getLocation() != null) {
+					destinatario.setLocation(in.getLocation());
+				}
+			}
+		}
+		destinatarioRepository.save(destinatario);
+	}
+	
+	public void UpdateDestinatario(Destinatario destinatario) {
+		destinatarioRepository.save(destinatario);
+	}
+	
+	public String DeleteDestinatario(Integer id) {
+		destinatarioRepository.deleteById(id);
+		Destinatario in = destinatarioRepository.getOne(id);
+		if (in.equals(null)) {
+			return "Destinatario não encontrado";
+		} else {
+			destinatarioRepository.delete(in);
+			return "Destinatario excluido com sucesso";
+		}
+	}
+	
+	
+	
+}

@@ -1,0 +1,29 @@
+
+.col-sm-6 {
+  padding: 0;
+}
+.border{
+  padding: 10px;
+}
+.btn{
+  margin-right: 10px;
+}
+.fa {
+  margin-right: 10px;
+}
+
+table .btn{
+  margin: 2px;
+}
+
+.home-content h4{
+  text-align: center;
+  padding: 3%
+}
+
+.home-content {
+  height: 100vh;
+  background-image: url("post.svg");
+  background-repeat: no repeat;
+  background-size: cover;
+}

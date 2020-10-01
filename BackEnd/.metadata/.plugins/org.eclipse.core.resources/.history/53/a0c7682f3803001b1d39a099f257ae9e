@@ -1,0 +1,93 @@
+package com.postservice.api.model;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+@Entity
+public class Postal {
+
+	@Id
+	private Integer id;
+	private LocalDateTime postDate;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="pessoaid", insertable=false, updatable=false)
+	private Pessoa pessoa;
+	
+	private String detalhes;
+	
+	private Integer pessoaid;
+	
+	@ManyToOne(fetch = FetchType.EAGERL)
+	@JoinColumn(name="destinatarioid", insertable=false, updatable=false)
+	private Destinatario destinatario;
+	
+	public Destinatario getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Destinatario destinatario) {
+		this.destinatario = destinatario;
+	}
+
+	public Integer getPessoaid() {
+		return pessoaid;
+	}
+
+	public void setPessoaid(Integer pessoaid) {
+		this.pessoaid = pessoaid;
+	}
+
+	public Postal() {
+		
+	}
+	
+	public Postal(Integer id, LocalDateTime postDate, Pessoa pessoa, String detalhes) {
+		super();
+		this.id = id;
+		this.postDate = postDate;
+		this.pessoa = pessoa;
+		this.detalhes = detalhes;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getPostDate() {
+		return postDate;
+	}
+
+	public void setPostDate(LocalDateTime postDate) {
+		this.postDate = postDate;
+	}
+
+	@JsonBackReference
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public String getDetalhes() {
+		return detalhes;
+	}
+
+	public void setDetalhes(String detalhes) {
+		this.detalhes = detalhes;
+	}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,5 @@
+package com.postservice.api.repository;
+
+public interface DestinatarioRepository {
+
+}

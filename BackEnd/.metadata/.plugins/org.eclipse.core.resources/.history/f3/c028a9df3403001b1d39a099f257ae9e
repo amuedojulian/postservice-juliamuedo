@@ -1,0 +1,5 @@
+package com.postservice.api.controller;
+
+public class DestinatarioController {
+
+}

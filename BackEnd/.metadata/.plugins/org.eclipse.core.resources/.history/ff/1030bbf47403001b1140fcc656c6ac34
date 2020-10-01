@@ -1,0 +1,106 @@
+package com.postservice.api.model;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+public class Postal {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String postDate;
+	private String detalhes;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="pessoaid", insertable=false, updatable=false)
+	private Pessoa pessoa;
+	
+	private Integer pessoaid;
+
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,  property = "id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="destinatarioid", insertable=false, updatable=false)
+	private Destinatario destinatario;
+	
+	private Integer destinatarioid;
+	
+	public Integer getDestinatarioid() {
+		return destinatarioid;
+	}
+
+	public void setDestinatarioid(Integer destinatarioid) {
+		this.destinatarioid = destinatarioid;
+	}
+	public Destinatario getDestinatario() {
+		return destinatario;
+	}
+
+	public void setDestinatario(Destinatario destinatario) {
+		this.destinatario = destinatario;
+	}
+
+	public Integer getPessoaid() {
+		return pessoaid;
+	}
+
+	public void setPessoaid(Integer pessoaid) {
+		this.pessoaid = pessoaid;
+	}
+
+	public Postal() {
+		
+	}
+	
+	public Postal(Integer id, String postDate, Pessoa pessoa, String detalhes, Destinatario destinatario) {
+		super();
+		this.id = id;
+		this.postDate = postDate;
+		this.pessoa = pessoa;
+		this.detalhes = detalhes;
+		this.destinatario = destinatario;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getPostDate() {
+		return postDate;
+	}
+
+	public void setPostDate(String postDate) {
+		this.postDate = postDate;
+	}
+
+	@JsonBackReference
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public String getDetalhes() {
+		return detalhes;
+	}
+
+	public void setDetalhes(String detalhes) {
+		this.detalhes = detalhes;
+	}
+	
+	
+	
+	
+	
+}
